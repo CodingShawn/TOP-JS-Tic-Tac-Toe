@@ -3,7 +3,7 @@ body {
     place-items: center;
 }
 
-.gameboard {
+#gameboard {
     display: grid;
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3, 200px);
@@ -11,6 +11,12 @@ body {
 
 .gamesquare {
     border: 1px solid #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: #333;
+    cursor: pointer;
 }
 
 .gamesquare:nth-child(1), .gamesquare:nth-child(2), .gamesquare:nth-child(3) {
