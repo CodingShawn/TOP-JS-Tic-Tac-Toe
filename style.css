@@ -1,0 +1,30 @@
+body {
+    display: grid;
+    place-items: center;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+}
+
+.gamesquare {
+    border: 1px solid #666666;
+}
+
+.gamesquare:nth-child(1), .gamesquare:nth-child(2), .gamesquare:nth-child(3) {
+    border-top: none;
+} 
+
+.gamesquare:nth-child(1), .gamesquare:nth-child(4), .gamesquare:nth-child(7) {
+    border-left: none;
+} 
+
+.gamesquare:nth-child(3n) {
+    border-right: none;
+} 
+
+.gamesquare:nth-child(7), .gamesquare:nth-child(8), .gamesquare:nth-child(9) {
+    border-bottom: none;
+} 
