@@ -2,10 +2,8 @@ var pubsub = {
     events: {},
 
     subscribe: function(eventName, callback) {
-        console.log('sub')
         if (!Array.isArray(this.events[eventName])) {
             this.events[eventName] = [];
-            console.log('sub2')
         }
         this.events[eventName].push(callback);
     },
@@ -20,5 +18,4 @@ var pubsub = {
             });
         }
     }
-
 }

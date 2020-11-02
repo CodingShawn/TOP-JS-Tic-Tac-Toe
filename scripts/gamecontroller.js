@@ -9,11 +9,9 @@ const gamecontroller = (() => {
         } else {
             currentPlayer = player1;
         }
-    }
+    };
 
-    const getCurrentPlayer = () => currentPlayer
-
-
+    const getCurrentPlayer = () => currentPlayer;
 
     const checkIfWin = (markerPositions) => {
         //Using centre cell as common point
@@ -48,12 +46,12 @@ const gamecontroller = (() => {
           && markerPositions[7] === currentPlayer.marker)))) {
             //Actual function starts here
             alert(currentPlayer.marker + " has won!");
+            pubsub.publish('gameOver');
         }
-    }
-
+    };
 
     pubsub.subscribe('markerPlaced', checkIfWin);
     pubsub.subscribe('markerPlaced', changePlayer);
     
-    return {changePlayer, getCurrentPlayer};  
+    return {getCurrentPlayer};  
 })();

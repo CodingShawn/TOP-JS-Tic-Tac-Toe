@@ -12,14 +12,13 @@ const gameboard = (() => {
             addMarker(index);
             displayBoard();
         }
-    })
-
+    });
 
     const displayBoard = () => {
         for (i = 0; i < markerPositions.length; i++) {
             gamesquares[i].textContent = markerPositions[i];
         }
-    }
+    };
 
     const addMarker = (index) => {
         if (markerPositions[index] === "") {
@@ -31,8 +30,13 @@ const gameboard = (() => {
         } else {
             alert("Please choose another spot!");
         }
-    }
+    };
 
-    return {displayBoard, board, gamesquares}
+    const resetBoard = () => {
+        markerPositions = ["","","","","","","","",""];
+        displayBoard();
+    };
+     
+    pubsub.subscribe('gameOver', resetBoard);
 
 })();
