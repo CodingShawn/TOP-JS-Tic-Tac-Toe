@@ -19,15 +19,15 @@ const gameboard = (() => {
         for (i = 0; i < markerPositions.length; i++) {
             gamesquares[i].textContent = markerPositions[i];
         }
-        //Set timeout to allow display to show before emitting event change
-        setTimeout(function(){
-            pubsub.publish('markerPlaced', markerPositions),1;
-        })
     }
 
     const addMarker = (index) => {
         if (markerPositions[index] === "") {
             markerPositions[index] = gamecontroller.getCurrentPlayer().marker;
+            //Set timeout to allow display to show before emitting event change
+            setTimeout(function(){
+                pubsub.publish('markerPlaced', markerPositions),1;
+            })
         } else {
             alert("Please choose another spot!");
         }
