@@ -23,8 +23,8 @@ const gameboard = (() => {
 
     const addMarker = (index) => {
         if (markerPositions[index] === "") {
-            markerPositions[index] = currentPlayer.marker;
-            events.publish('markerPlaced', markerPositions);
+            markerPositions[index] = gamecontroller.getCurrentPlayer().marker;
+            pubsub.publish('markerPlaced', markerPositions);
         } else {
             alert("Please choose another spot!");
         }
