@@ -15,7 +15,7 @@ const gamecontroller = (() => {
 
     const checkIfWin = (markerPositions) => {
         //Using centre cell as common point
-        if (((markerPositions[4] === currentPlayer.marker) && 
+        return ((markerPositions[4] === currentPlayer.marker) && 
             //If diagonals are 3 markers in a row
             (markerPositions[0] === currentPlayer.marker
           && markerPositions[8] === currentPlayer.marker) || 
@@ -43,14 +43,27 @@ const gamecontroller = (() => {
           && markerPositions[5] === currentPlayer.marker) ||
             //Last row are 3 in a row
             (markerPositions[6] === currentPlayer.marker
-          && markerPositions[7] === currentPlayer.marker)))) {
-            //Actual function starts here
+          && markerPositions[7] === currentPlayer.marker)))
+    };
+
+    const checkIfDraw = (markerPositions) => {
+        //Means all cells taken up. i.e. game draw
+        return !markerPositions.includes("");
+    };
+
+    const checkIfWinOrDraw = (markerPositions) => {
+        if (checkIfWin(markerPositions)) {
+            console.log('checking')
             alert(currentPlayer.marker + " has won!");
+            pubsub.publish('gameOver');
+        } else if (checkIfDraw(markerPositions)) {
+            alert("Game draw!");
             pubsub.publish('gameOver');
         }
     };
 
-    pubsub.subscribe('markerPlaced', checkIfWin);
+    //Have to check if win first before changing player
+    pubsub.subscribe('markerPlaced', checkIfWinOrDraw);
     pubsub.subscribe('markerPlaced', changePlayer);
     
     return {getCurrentPlayer};  
