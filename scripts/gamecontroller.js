@@ -15,9 +15,10 @@ const gamecontroller = (() => {
 
     const checkIfWin = (markerPositions) => {
         //Using centre cell as common point
-        return ((markerPositions[4] === currentPlayer.marker) && 
+        return (
+            ((markerPositions[4] === currentPlayer.marker) && 
             //If diagonals are 3 markers in a row
-            (markerPositions[0] === currentPlayer.marker
+            ((markerPositions[0] === currentPlayer.marker
           && markerPositions[8] === currentPlayer.marker) || 
             (markerPositions[2] === currentPlayer.marker
           && markerPositions[6] === currentPlayer.marker) ||
@@ -26,12 +27,15 @@ const gamecontroller = (() => {
           && markerPositions[7] === currentPlayer.marker) ||
             //If horizontal through centre are 3 in a row
             (markerPositions[3] === currentPlayer.marker
-          && markerPositions[5] === currentPlayer.marker)) ||
+          && markerPositions[5] === currentPlayer.marker))) 
+          
+          ||
+
             //Using first cell as common point
             ((markerPositions[0] === currentPlayer.marker) 
           &&
             //First row are 3 in a row
-            ((markerPositions[1] === currentPlayer.marker
+            (((markerPositions[1] === currentPlayer.marker
           && markerPositions[2] === currentPlayer.marker) ||
             //First column are 3 in a row
             (markerPositions[3] === currentPlayer.marker 
@@ -43,7 +47,8 @@ const gamecontroller = (() => {
           && markerPositions[5] === currentPlayer.marker) ||
             //Last row are 3 in a row
             (markerPositions[6] === currentPlayer.marker
-          && markerPositions[7] === currentPlayer.marker)))
+          && markerPositions[7] === currentPlayer.marker))))
+        )
     };
 
     const checkIfDraw = (markerPositions) => {
