@@ -1,7 +1,15 @@
 const gamecontroller = (() => {
-    const player1 = player("X");
-    const player2 = player("O");
-    let currentPlayer = player1;
+    let player1;
+    let player2;
+    let currentPlayer;
+  
+    const startGame = () => {
+      pubsub.publish('newGame');
+      player1 = player("X");
+      player2 = player("O");
+      currentPlayer = player1;
+    };
+
 
     const changePlayer = () => {
         if (currentPlayer === player1) {
@@ -71,5 +79,5 @@ const gamecontroller = (() => {
     pubsub.subscribe('markerPlaced', checkIfWinOrDraw);
     pubsub.subscribe('markerPlaced', changePlayer);
     
-    return {getCurrentPlayer};  
+    return {getCurrentPlayer, startGame};  
 })();

@@ -1,6 +1,6 @@
 const gameboard = (() => {
     let markerPositions = ["","","","","","","","",""];
-    let board = document.getElementById("gameboard");
+    let board = document.getElementsByClassName("gameboard")[0];
     let gamesquares = board.getElementsByTagName("div");
     
     board.addEventListener('click', function(e) {
@@ -36,7 +36,18 @@ const gameboard = (() => {
         markerPositions = ["","","","","","","","",""];
         displayBoard();
     };
+
+    const showBoard = () => {
+        board.classList.remove("hide");
+        for (i = 0; i < gamesquares.length; i++) {
+            gamesquares[i].classList.remove("hide");
+        }
+        let startBtn = document.getElementById("start-btn");
+        startBtn.textContent = "Reset Game"
+    };
      
     pubsub.subscribe('gameOver', resetBoard);
+    pubsub.subscribe('newGame', resetBoard)
+    pubsub.subscribe('newGame', showBoard)
 
 })();
