@@ -59,7 +59,7 @@ const gamecontroller = (() => {
     const checkIfWinOrDraw = (markerPositions) => {
         if (checkIfWin(markerPositions)) {
             console.log('checking')
-            alert(currentPlayer.marker + " has won!");
+            alert(currentPlayer.name + " has won!");
             pubsub.publish('gameOver');
         } else if (checkIfDraw(markerPositions)) {
             alert("Game draw!");
