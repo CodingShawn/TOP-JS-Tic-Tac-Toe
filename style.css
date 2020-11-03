@@ -3,7 +3,7 @@ body {
     place-items: center;
 }
 
-#gameboard {
+.gameboard {
     display: grid;
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3, 200px);
@@ -34,3 +34,23 @@ body {
 .gamesquare:nth-child(7), .gamesquare:nth-child(8), .gamesquare:nth-child(9) {
     border-bottom: none;
 } 
+
+.hide {
+    display: none;
+}
+
+.controls {
+    padding: 50px;
+}
+
+#start-btn {
+    padding: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-btn:hover {
+    box-shadow: inset 0 0 10px #999999;
+}
